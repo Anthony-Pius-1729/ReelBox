@@ -1,75 +1,79 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Ionicons } from "@expo/vector-icons";
+import {
+  ImageBackground,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
-export default function HomeScreen() {
+export default function Index() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <SafeAreaView>
+      <ScrollView showsVerticalScrollIndicator={false} className="max-h-full">
+        <View className="flex-row items-center bg-gray-100 rounded-2xl px-3 w-full mx-auto overflow-hidden mt-4">
+          <TextInput
+            placeholder="Movie, Drama & Others"
+            placeholderTextColor="#666666"
+            className="flex-1 py-2 px-7 text-sm border-2 rounded-3xl border-gray-700 focus:outline-none focus:ring-0"
+          />
+          <Ionicons
+            name="search"
+            color="#666666"
+            size={20}
+            className="absolute left-5"
+          />
+        </View>
+
+        <View className="mt-5 rounded-2xl mx-5">
+          <View>
+            <TouchableOpacity>
+              <ImageBackground
+                source={{
+                  uri: "https://berkleyspectator.com/wp-content/uploads/2022/01/vgPj2F128qtShMaT9DNa8ODtWUFhqqrFPEUWfTRo-e1642785179405-683x900.jpeg",
+                }}
+                className="w-10/12 mx-auto h-48 rounded-2xl justify-center items-center overflow-hidden"
+                resizeMode="cover"
+              >
+                <Text className="text-white text-xl font-bold">
+                  Content over image
+                </Text>
+              </ImageBackground>
+            </TouchableOpacity>
+          </View>
+          <View className=" mt-4 ">
+            <View className="flex flex-row  justify-between items-center">
+              <Text className="font-bold text-xl ">Popular Movies</Text>
+              <Text className="font-bold text-md underline">See All</Text>
+            </View>
+            <View className="mt-4">
+              <TouchableOpacity>
+                <ImageBackground
+                  source={{
+                    uri: "https://editorial.rottentomatoes.com/wp-content/uploads/2024/05/700MadMax.jpg",
+                  }}
+                  className="w-10/12 mx-auto h-64 rounded-2xl justify-center items-center overflow-hidden"
+                  resizeMode="cover"
+                ></ImageBackground>
+              </TouchableOpacity>
+            </View>
+            <View className="mt-4">
+              <Text className="font-bold text-xl ">Amazon Movies</Text>
+              <TouchableOpacity>
+                <ImageBackground
+                  source={{
+                    uri: "https://assets.vogue.com/photos/67b3e6d010c789d25230be2b/4:3/w_2240,c_limit/OneDay-FirstLook.jpg",
+                  }}
+                  className="w-10/12 mt-4 mx-auto h-64 rounded-2xl justify-center items-center overflow-hidden"
+                  resizeMode="cover"
+                ></ImageBackground>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
