@@ -20,7 +20,7 @@ export const fetchData = async () => {
 export const searchMovies = async (query) => {
   try {
     const response = await fetch(
-      `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`
+      `${BASE_URL}/search/movie?api_key=${apiKey}&query=${query}`
     );
     const data = await response.json();
     return data.results;

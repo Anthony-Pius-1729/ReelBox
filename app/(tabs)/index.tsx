@@ -8,8 +8,17 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { fetchData } from "../../services/movieApi";
 
-export default function Index() {
+export default async function Index() {
+  try {
+    const res = await fetchData();
+    const data = await res.json();
+    console.log(data);
+  } catch (error) {
+    console.log("Error occured: ", error);
+  }
+
   return (
     <SafeAreaView>
       <ScrollView showsVerticalScrollIndicator={false} className="max-h-full">
