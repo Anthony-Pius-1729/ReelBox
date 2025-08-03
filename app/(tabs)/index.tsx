@@ -1,8 +1,10 @@
 import { Ionicons } from "@expo/vector-icons";
 import {
   ActivityIndicator,
+  Button,
   FlatList,
   ImageBackground,
+  Pressable,
   SafeAreaView,
   ScrollView,
   Text,
@@ -127,9 +129,14 @@ export default function Index() {
           <View className="flex-row justify-between items-center mb-4">
             <Text className="font-bold text-xl">Popular Movies</Text>
             <TouchableOpacity>
-              <Text className="font-bold text-base text-blue-600 underline">
-                See All
-              </Text>
+              <Pressable
+                className="bg-blue-600 px-4 py-2 rounded-xl"
+                onPress={() => console.log("See All pressed")}
+              >
+                <Text className="text-white font-semibold text-center">
+                  See All
+                </Text>
+              </Pressable>
             </TouchableOpacity>
           </View>
           <TouchableOpacity>
